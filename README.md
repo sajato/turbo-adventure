@@ -1,2 +1,2 @@
 # turbo-adventure
-Karaoke Pair Builder Server
+Karaoke Pair Builder Server and Services build with dropwizard.io
