@@ -1,4 +1,4 @@
-package de.atomfrde.github.karaoke.server.config;
+package de.atomfrede.github.karaoke.server.config;
 
 import io.dropwizard.Configuration;
 

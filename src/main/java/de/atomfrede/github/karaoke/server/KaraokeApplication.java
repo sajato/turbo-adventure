@@ -1,6 +1,6 @@
-package de.atomfrde.github.karaoke.server;
+package de.atomfrede.github.karaoke.server;
 
-import de.atomfrde.github.karaoke.server.config.KaraokeConfiguration;
+import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
 import io.dropwizard.Application;
 import io.dropwizard.setup.Environment;
 
