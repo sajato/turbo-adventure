@@ -8,7 +8,9 @@
 	<artifactId>karaoke-server</artifactId>
 	<version>0.1-SNAPSHOT</version>
 
+
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<dropwizard.version>0.8.0</dropwizard.version>
 		<jmockit.version>1.16</jmockit.version>
 		<jacoco.version>0.7.4.201502262128</jacoco.version>
@@ -65,7 +67,8 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+
+	<plugins>
 
 		<plugin>
                 <groupId>org.apache.maven.plugins</groupId>

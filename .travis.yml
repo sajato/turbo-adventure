@@ -4,7 +4,7 @@ jdk:
 
 env:
   global:
-    - secure: "Vb/k/0dekL60FCJvZ+cMVJnvi85Lg8c3seLxiKUuJL1OC09p4/Ml5tAUFaqFZbgqDhiTd0ymf8dOUBDguh3mGjgAnTPOfnWp5Y05SxAb3bzD6Mt/Q0oJ+cxtlSLXYVe3Kc6Eru3zIyaOuWFqhUIgN7SnYDX0H+aP0a7sBtyJ5RM="
+    - secure: "ADac2amplbG3kUk/BiqtNMn6uVCUd84rER0IyycVRi+49lDZWObt1XxPV/93GhzpPswqbJ91uCyP/94YNQZk8GNcwQGattIch/HlPp2pfvH6Ew7VO9KQd86k80usKsUQ02xSeqW97b07kMvVy9Uy8huuwGGF2REmxTP62deS6mY="
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
