@@ -11,6 +11,7 @@
 	<properties>
 		<dropwizard.version>0.8.0</dropwizard.version>
 		<jmockit.version>1.16</jmockit.version>
+		<jacoco.version>0.7.4.201502262128</jacoco.version>
 	</properties>
 
 	<dependencies>
@@ -150,6 +151,20 @@
 					<source>1.8</source>
 					<target>1.8</target>
 				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>${jacoco.version}</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

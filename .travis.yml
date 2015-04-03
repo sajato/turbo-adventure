@@ -1,3 +1,10 @@
 language: java
 jdk:
   - oraclejdk8
+
+env:
+  global:
+    - secure: "Vb/k/0dekL60FCJvZ+cMVJnvi85Lg8c3seLxiKUuJL1OC09p4/Ml5tAUFaqFZbgqDhiTd0ymf8dOUBDguh3mGjgAnTPOfnWp5Y05SxAb3bzD6Mt/Q0oJ+cxtlSLXYVe3Kc6Eru3zIyaOuWFqhUIgN7SnYDX0H+aP0a7sBtyJ5RM="
+
+after_success:
+  - mvn clean test jacoco:report coveralls:report

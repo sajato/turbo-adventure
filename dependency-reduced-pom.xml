@@ -55,7 +55,7 @@
               <transformers>
                 <transformer />
                 <transformer>
-                    <mainClass>de.atomfrede.github.karaoke.server.KaraokeApplication</mainClass>
+                  <mainClass>de.atomfrede.github.karaoke.server.KaraokeApplication</mainClass>
                 </transformer>
               </transformers>
             </configuration>
@@ -82,10 +82,25 @@
           <target>1.8</target>
         </configuration>
       </plugin>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+      </plugin>
     </plugins>
   </build>
+  <dependencies>
+    <dependency>
+      <groupId>org.jmockit</groupId>
+      <artifactId>jmockit</artifactId>
+      <version>1.16</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
   <properties>
+    <jmockit.version>1.16</jmockit.version>
     <dropwizard.version>0.8.0</dropwizard.version>
+    <jacoco.version>0.7.4.201502262128</jacoco.version>
   </properties>
 </project>
 
