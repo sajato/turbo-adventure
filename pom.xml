@@ -10,6 +10,7 @@
 
 	<properties>
 		<dropwizard.version>0.8.0</dropwizard.version>
+		<jmockit.version>1.16</jmockit.version>
 	</properties>
 
 	<dependencies>
@@ -51,6 +52,13 @@
 			<groupId>io.dropwizard</groupId>
 			<artifactId>dropwizard-testing</artifactId>
 			<version>${dropwizard.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>${jmockit.version}</version>
+			<scope>test</scope>
 		</dependency>
 
 	</dependencies>
