@@ -1,6 +1,9 @@
 package de.atomfrede.github.karaoke.server;
 
+import com.mongodb.MongoClient;
 import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
+import de.atomfrede.github.karaoke.server.mongo.JongoManaged;
+import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
 import de.atomfrede.github.karaoke.server.resource.PingResource;
 import io.dropwizard.Application;
 import io.dropwizard.java8.Java8Bundle;
@@ -19,9 +22,15 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
     }
 
     @Override
-    public void run(KaraokeConfiguration karaokeConfiguration, Environment environment) throws Exception {
+    public void run(KaraokeConfiguration configuration, Environment environment) throws Exception {
 
         System.out.println("Starting Karaoke Application");
+
+        MongoClient mongo = new MongoClient(configuration.mongohost, configuration.mongoport);
+        JongoManaged jongoManaged = new JongoManaged(mongo.getDB(configuration.mongodb));
+        environment.healthChecks().register("MongoDB", new MongoHealthCheck(mongo));
+
+        environment.lifecycle().manage(jongoManaged);
 
         PingResource pingResource = new PingResource();
 

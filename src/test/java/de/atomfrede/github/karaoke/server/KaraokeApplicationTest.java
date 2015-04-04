@@ -2,6 +2,8 @@ package de.atomfrede.github.karaoke.server;
 
 import com.codahale.metrics.health.HealthCheckRegistry;
 import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
+import de.atomfrede.github.karaoke.server.mongo.JongoManaged;
+import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
 import de.atomfrede.github.karaoke.server.resource.PingResource;
 import io.dropwizard.jersey.setup.JerseyEnvironment;
 import io.dropwizard.lifecycle.setup.LifecycleEnvironment;
@@ -53,6 +55,28 @@ public class KaraokeApplicationTest {
         new Verifications() {{
 
             jersey.register(withInstanceOf(PingResource.class));
+        }};
+    }
+
+    @Test
+    public void shouldAddMongoHealthCheck() throws Exception {
+
+        application.run(configuration, environment);
+
+        new Verifications() {{
+
+            healthChecks.register("MongoDB", withInstanceOf(MongoHealthCheck.class));
+        }};
+    }
+
+    @Test
+    public void shouldManageMongo() throws Exception {
+
+        application.run(configuration, environment);
+
+        new Verifications() {{
+
+            environment.lifecycle().manage(withInstanceOf(JongoManaged.class));
         }};
     }
 }
