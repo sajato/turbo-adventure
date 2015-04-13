@@ -27,7 +27,7 @@ Before you submit your pull request consider the following guidelines:
     git push origin my-fix-branch
     ```
 
-* In GitHub, send a pull request to `jhipster/generator-jhipster:master`.
+* In GitHub, send a pull request to `atomfrede/turbo-adventure:master`.
 * If we suggest changes then
   * Make the required updates.
   * Re-run the JHipster tests on your sample generated project to ensure tests are still passing.
