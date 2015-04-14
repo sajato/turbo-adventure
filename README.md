@@ -9,10 +9,6 @@
 
 Karaoke Pair Builder Server and Services build with dropwizard.io
 
-## Contributing
-
-
-
 ## License
 
 
