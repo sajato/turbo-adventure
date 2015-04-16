@@ -8,8 +8,6 @@ import mockit.integration.junit4.JMockit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import java.util.ArrayList;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -24,8 +22,8 @@ public class MongoHealthCheckTest {
 
         new NonStrictExpectations() {{
 
-            mongoClient.getDatabaseNames();
-            result = new ArrayList<>();
+            mongoClient.listDatabaseNames();
+            result = null;
         }};
 
         MongoHealthCheck check = new MongoHealthCheck(mongoClient);
@@ -39,7 +37,7 @@ public class MongoHealthCheckTest {
 
         new NonStrictExpectations() {{
 
-            mongoClient.getDatabaseNames();
+            mongoClient.listDatabaseNames();
             result = new Exception("MongoDB error");
         }};
 
