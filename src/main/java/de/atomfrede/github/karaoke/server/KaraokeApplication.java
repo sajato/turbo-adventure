@@ -1,5 +1,6 @@
 package de.atomfrede.github.karaoke.server;
 
+import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
 import de.atomfrede.github.karaoke.server.mongo.JongoManaged;
@@ -27,7 +28,7 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
         System.out.println("Starting Karaoke Application");
 
         MongoClient mongo = new MongoClient(configuration.mongohost, configuration.mongoport);
-        JongoManaged jongoManaged = new JongoManaged(mongo.getDB(configuration.mongodb));
+        JongoManaged jongoManaged = new JongoManaged(new DB(mongo, configuration.mongodb));
         environment.healthChecks().register("MongoDB", new MongoHealthCheck(mongo));
 
         environment.lifecycle().manage(jongoManaged);
