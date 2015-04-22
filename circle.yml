@@ -3,3 +3,12 @@ machine:
     - docker
   java:
     version: oraclejdk8
+
+dependencies:
+  cache_directories:
+    - "~/docker"
+  override:
+    - docker info
+    - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
+    - docker build -t atomfrede/turbo-adventure src/main/docker
+    - mkdir -p ~/docker; docker save atomfrede/turbo-adventure > ~/docker/image.tar
