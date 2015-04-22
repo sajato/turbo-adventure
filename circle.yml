@@ -2,7 +2,7 @@ machine:
   services:
     - docker
   java:
-    version: oraclejdk8
+    version: openjdk-8
 
 dependencies:
   cache_directories:
