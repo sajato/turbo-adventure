@@ -1,6 +1,7 @@
 # turbo-adventure
 
 [![Build Status](https://travis-ci.org/atomfrede/turbo-adventure.svg?branch=master)](https://travis-ci.org/atomfrede/turbo-adventure)
+[![Circle CI](https://circleci.com/gh/atomfrede/turbo-adventure.svg?style=svg)](https://circleci.com/gh/atomfrede/turbo-adventure)
 [![Coverage Status](https://coveralls.io/repos/atomfrede/turbo-adventure/badge.svg?branch=master)](https://coveralls.io/r/atomfrede/turbo-adventure?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5522676e971f7847ca0004a5/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5522676e971f7847ca0004a5)
 [![Stories in Ready](https://badge.waffle.io/atomfrede/turbo-adventure.svg?label=ready&title=Ready)](http://waffle.io/atomfrede/turbo-adventure)
