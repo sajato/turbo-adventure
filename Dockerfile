@@ -1,3 +1,3 @@
-FROM dockerfile/java:openjdk-8-jdk
+FROM java:openjdk-8-jdk
 
 EXPOSE 8080
