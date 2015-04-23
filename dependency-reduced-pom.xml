@@ -98,13 +98,13 @@
       <plugin>
         <groupId>org.eluder.coveralls</groupId>
         <artifactId>coveralls-maven-plugin</artifactId>
-        <version>3.1.0</version>
+          <version>${coveralls.maven.vesion}</version>
       </plugin>
     </plugins>
   </build>
   <repositories>
     <repository>
-      <releases/>
+        <releases/>
       <snapshots>
         <enabled>false</enabled>
       </snapshots>
@@ -121,10 +121,15 @@
     </dependency>
   </dependencies>
   <properties>
-    <jmockit.version>1.16</jmockit.version>
-    <dropwizard.version>0.8.0</dropwizard.version>
-    <jacoco.version>0.7.4.201502262128</jacoco.version>
+      <dropwizard.java8.version>0.8.0-2</dropwizard.java8.version>
+      <mongo.java.driver.version>3.0.0</mongo.java.driver.version>
+      <dropwizard.version>0.8.1</dropwizard.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+      <jacoco.version>0.7.4.201502262128</jacoco.version>
+      <jackson.joda.version>2.5.2</jackson.joda.version>
+      <jmockit.version>1.16</jmockit.version>
+      <jongo.version>1.2-early-20150210-0143</jongo.version>
+      <coveralls.maven.vesion>3.1.0</coveralls.maven.vesion>
   </properties>
 </project>
 
