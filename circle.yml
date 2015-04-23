@@ -8,6 +8,7 @@ dependencies:
   cache_directories:
     - "~/docker"
   override:
+    - mvn install
     - docker info
     - if [[ -e ~/docker/image.tar ]]; then docker load --input ~/docker/image.tar; fi
     - docker build -t atomfrede/turbo-adventure .
