@@ -4,9 +4,11 @@ machine:
   java:
     version: oraclejdk8
 
-test:
+dependencies:
   cache_directories:
     - "~/docker"
+
+test:
   override:
     - mvn install
     - docker info
