@@ -3,9 +3,10 @@ package de.atomfrede.github.karaoke.server;
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
 import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
-import de.atomfrede.github.karaoke.server.mongo.JongoManaged;
 import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
+import de.atomfrede.github.karaoke.server.mongo.SingerRepository;
 import de.atomfrede.github.karaoke.server.resource.PingResource;
+import de.atomfrede.github.karaoke.server.resource.SingerResource;
 import io.dropwizard.Application;
 import io.dropwizard.java8.Java8Bundle;
 import io.dropwizard.setup.Bootstrap;
@@ -28,13 +29,17 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
         System.out.println("Starting Karaoke Application");
 
         MongoClient mongo = new MongoClient(configuration.mongohost, configuration.mongoport);
-        JongoManaged jongoManaged = new JongoManaged(new DB(mongo, configuration.mongodb));
         environment.healthChecks().register("MongoDB", new MongoHealthCheck(mongo));
 
-        environment.lifecycle().manage(jongoManaged);
+        final SingerRepository singerRepository = new SingerRepository(new DB(mongo, configuration.mongodb));
+        environment.lifecycle().manage(singerRepository);
+
+        final SingerResource singerResource = new SingerResource(singerRepository);
+        environment.jersey().register(singerResource);
 
         PingResource pingResource = new PingResource();
 
         environment.jersey().register(pingResource);
     }
+
 }

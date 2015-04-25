@@ -1,14 +1,25 @@
 package de.atomfrede.github.karaoke.server.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.jongo.marshall.jackson.oid.MongoId;
 
 public class Singer {
 
     @MongoId
+    @JsonProperty
     private String _id;
 
+    @JsonProperty
     private String firstname;
+    @JsonProperty
     private String lastname;
+
+    public Singer() {
+    }
+
+    public Singer(String id) {
+        this._id = id;
+    }
 
     public String firstname() {
         return this.firstname;
@@ -27,6 +38,5 @@ public class Singer {
         this.lastname = lastname;
         return this;
     }
-
 
 }
