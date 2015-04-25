@@ -10,6 +10,12 @@
 
 Karaoke Pair Builder Server and Services build with dropwizard.io
 
+## Docker
+
+The application is available at docker hub:
+
+``docker pull atomfrede/turbo-adventure``
+
 ## License
 
 
