@@ -1,5 +1,5 @@
-mongohost: ${MONGO_DB_MASTER_SERVICE_HOST:-localhost}
-mongoport: ${MONGO_DB_MASTER_SERVICE_PORT:-27017}
+mongohost: ${MONGO_DB_MASTER_SERVICE_HOST}
+mongoport: ${MONGO_DB_MASTER_SERVICE_PORT}
 mongodb: karaokedb
 
 server:
