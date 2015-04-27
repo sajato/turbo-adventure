@@ -37,7 +37,7 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
         MongoClient mongo = new MongoClient(configuration.mongohost, configuration.mongoport);
         environment.healthChecks().register("MongoDB", new MongoHealthCheck(mongo));
 
-        final SingerRepository singerRepository = new SingerRepository(new DB(mongo, configuration.mongodb));
+        final SingerRepository singerRepository = new SingerRepository(new DB(mongo, configuration.mongodb), configuration);
         environment.lifecycle().manage(singerRepository);
 
         final SingerResource singerResource = new SingerResource(singerRepository);
