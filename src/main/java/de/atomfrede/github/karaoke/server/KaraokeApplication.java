@@ -24,7 +24,7 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
     public void initialize(final Bootstrap<KaraokeConfiguration> bootstrap) {
 
         bootstrap.setConfigurationSourceProvider(
-                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor())
+                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor(false))
         );
         bootstrap.addBundle(new Java8Bundle());
     }
