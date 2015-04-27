@@ -8,6 +8,8 @@ import de.atomfrede.github.karaoke.server.mongo.SingerRepository;
 import de.atomfrede.github.karaoke.server.resource.PingResource;
 import de.atomfrede.github.karaoke.server.resource.SingerResource;
 import io.dropwizard.Application;
+import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
+import io.dropwizard.configuration.SubstitutingSourceProvider;
 import io.dropwizard.java8.Java8Bundle;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
@@ -20,6 +22,10 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
 
     @Override
     public void initialize(final Bootstrap<KaraokeConfiguration> bootstrap) {
+
+        bootstrap.setConfigurationSourceProvider(
+                new SubstitutingSourceProvider(bootstrap.getConfigurationSourceProvider(), new EnvironmentVariableSubstitutor())
+        );
         bootstrap.addBundle(new Java8Bundle());
     }
 
