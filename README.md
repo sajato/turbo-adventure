@@ -16,6 +16,8 @@ The application is available at docker hub:
 
 ``docker pull atomfrede/turbo-adventure``
 
+``docker run –p 8080:8080 atomfrede/turbo-adventure``
+
 ## License
 
 
