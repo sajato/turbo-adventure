@@ -1,43 +1,27 @@
 package de.atomfrede.github.karaoke.server.resource;
 
-import com.mongodb.DB;
 import de.atomfrede.github.karaoke.server.entity.Singer;
 import de.atomfrede.github.karaoke.server.entity.Singers;
-import de.atomfrede.github.karaoke.server.mongo.JongoManaged;
-import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
 import de.atomfrede.github.karaoke.server.mongo.SingerRepository;
 import io.dropwizard.testing.junit.ResourceTestRule;
-import mockit.Mocked;
-import mockit.NonStrictExpectations;
-import mockit.integration.junit4.JMockit;
-import org.jongo.Jongo;
 import org.junit.ClassRule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.util.Arrays;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
-@RunWith(JMockit.class)
 public class SingerResourceTest {
 
+    private static final SingerRepository repository = mock(SingerRepository.class);
 
-    @Mocked
-    static DB db;
     @ClassRule
     public static final ResourceTestRule resources = ResourceTestRule.builder()
-            .addResource(new SingerResource(new SingerRepository(db))).build();
-    @Mocked
-    JongoManaged jongoManaged;
-    @Mocked
-    MongoHealthCheck mongoHealthCheck;
-    @Mocked
-    Jongo jongo;
-    @Mocked
-    SingerRepository repository;
+            .addResource(new SingerResource(repository)).build();
 
     @Test
     public void shouldGetAllSingers() {
@@ -45,10 +29,7 @@ public class SingerResourceTest {
         Singer johnDoe = new Singer().setFirstname("John").setLastname("Doe");
         Singer janeDoe = new Singer().setFirstname("Jane").setLastname("Doe");
 
-        new NonStrictExpectations() {{
-            repository.findAll();
-            result = Arrays.asList(johnDoe, janeDoe);
-        }};
+        when(repository.findAll()).thenReturn(Arrays.asList(johnDoe, janeDoe));
 
         Singers singers = resources.client().target("/singer").request().get(Singers.class);
 
@@ -59,10 +40,7 @@ public class SingerResourceTest {
     @Test
     public void shouldGetSingleSinger() {
 
-        new NonStrictExpectations() {{
-            repository.findOne("123");
-            result = new Singer("123").setFirstname("John").setLastname("Doe");
-        }};
+        when(repository.findOne("123")).thenReturn(new Singer("123").setFirstname("John").setLastname("Doe"));
 
         Singer singer = resources.client().target("/singer/123").request().get(Singer.class);
 

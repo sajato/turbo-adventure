@@ -21,6 +21,10 @@ public class Singer {
         this._id = id;
     }
 
+    public String id() {
+        return _id;
+    }
+
     public String firstname() {
         return this.firstname;
     }

@@ -1,20 +1,20 @@
 package de.atomfrede.github.karaoke.server.mongo;
 
 import com.mongodb.DB;
-import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
 import de.atomfrede.github.karaoke.server.entity.Singer;
 import de.atomfrede.github.karaoke.server.repository.CrudRepository;
 import org.jongo.MongoCollection;
 
 public class SingerRepository extends JongoManaged implements CrudRepository<Singer, String> {
 
+    final String COLLECTION_NAME = "singers";
     final String ID_QUERY = "{_id:#}";
 
     MongoCollection collection;
 
-    public SingerRepository(DB db, KaraokeConfiguration configuration) {
-        super(db, configuration);
-        collection = jongo.getCollection(configuration.mongodb);
+    public SingerRepository(DB db) {
+        super(db);
+        collection = jongo.getCollection("singers");
     }
 
     @Override
