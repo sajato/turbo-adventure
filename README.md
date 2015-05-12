@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/atomfrede/turbo-adventure.svg?branch=master)](https://travis-ci.org/atomfrede/turbo-adventure)
 [![Circle CI](https://circleci.com/gh/atomfrede/turbo-adventure.svg?style=svg)](https://circleci.com/gh/atomfrede/turbo-adventure)
 [![Coverage Status](https://coveralls.io/repos/atomfrede/turbo-adventure/badge.svg?branch=master)](https://coveralls.io/r/atomfrede/turbo-adventure?branch=master)
+[![codecov.io](http://codecov.io/github/atomfrede/turbo-adventure/coverage.svg?branch=master)](http://codecov.io/github/atomfrede/turbo-adventure?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/5522676e971f7847ca0004a5/badge.svg?style=flat)](https://www.versioneye.com/user/projects/5522676e971f7847ca0004a5)
 [![Stories in Ready](https://badge.waffle.io/atomfrede/turbo-adventure.svg?label=ready&title=Ready)](http://waffle.io/atomfrede/turbo-adventure)
 [![HuBoardbadge](http://img.shields.io/badge/Hu-Board-7965cc.svg)](https://huboard.com/atomfrede/turbo-adventure#/)
@@ -22,7 +23,7 @@ The application is available at docker hub:
 ## License
 
 
-    Copyright 2015 
+    Copyright 2015
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -35,4 +36,3 @@ The application is available at docker hub:
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-
