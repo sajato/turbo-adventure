@@ -20,6 +20,10 @@ The application is available at docker hub:
 
 ``docker run –p 3434:3434 atomfrede/turbo-adventure``
 
+## Coverage
+
+![codecov.io](http://codecov.io/github/atomfrede/turbo-adventure/branch.svg?branch=master)
+
 ## License
 
 
