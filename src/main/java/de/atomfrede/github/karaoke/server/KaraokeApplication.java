@@ -2,6 +2,8 @@ package de.atomfrede.github.karaoke.server;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.ServerAddress;
 import de.atomfrede.github.karaoke.server.config.KaraokeConfiguration;
 import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
 import de.atomfrede.github.karaoke.server.mongo.SingerRepository;
@@ -34,7 +36,11 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
 
         System.out.println("Starting Karaoke Application");
 
-        MongoClient mongo = new MongoClient(configuration.mongohost, configuration.mongoport);
+        MongoClientOptions clientOptions = MongoClientOptions.builder()
+                .connectTimeout(500).build();
+        ServerAddress serverAddress = new ServerAddress(configuration.mongohost, configuration.mongoport);
+
+        MongoClient mongo = new MongoClient(serverAddress, clientOptions);
         environment.healthChecks().register("MongoDB", new MongoHealthCheck(mongo));
 
         final SingerRepository singerRepository = new SingerRepository(new DB(mongo, configuration.mongodb));
