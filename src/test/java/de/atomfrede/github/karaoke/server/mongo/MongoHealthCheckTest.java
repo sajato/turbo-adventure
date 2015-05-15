@@ -2,6 +2,7 @@ package de.atomfrede.github.karaoke.server.mongo;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoIterable;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.integration.junit4.JMockit;
@@ -16,6 +17,8 @@ public class MongoHealthCheckTest {
 
     @Mocked
     MongoClient mongoClient;
+    @Mocked
+    MongoIterable mongoIterable;
 
     @Test
     public void shouldBeHealthy() throws Exception {
@@ -23,7 +26,10 @@ public class MongoHealthCheckTest {
         new NonStrictExpectations() {{
 
             mongoClient.listDatabaseNames();
-            result = null;
+            result = mongoIterable;
+
+            mongoIterable.first();
+            result = "DB";
         }};
 
         MongoHealthCheck check = new MongoHealthCheck(mongoClient);
