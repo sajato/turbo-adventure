@@ -21,12 +21,12 @@
 		<coveralls.maven.vesion>3.1.0</coveralls.maven.vesion>
 	</properties>
 
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
 	<dependencies>
 		<!-- Dropwizard components -->
@@ -90,7 +90,13 @@
 			<version>${dropwizard.version}</version>
 		</dependency>
 
-		<dependency>
+        <dependency>
+            <groupId>com.github.sajato.logw</groupId>
+            <artifactId>logw-slf4j</artifactId>
+            <version>74f5112dd4</version>
+        </dependency>
+
+        <dependency>
 			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
 			<version>${jmockit.version}</version>

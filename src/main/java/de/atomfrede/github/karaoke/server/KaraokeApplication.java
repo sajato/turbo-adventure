@@ -9,6 +9,7 @@ import de.atomfrede.github.karaoke.server.mongo.MongoHealthCheck;
 import de.atomfrede.github.karaoke.server.mongo.SingerRepository;
 import de.atomfrede.github.karaoke.server.resource.PingResource;
 import de.atomfrede.github.karaoke.server.resource.SingerResource;
+import de.sajato.logw.Logw;
 import io.dropwizard.Application;
 import io.dropwizard.configuration.EnvironmentVariableSubstitutor;
 import io.dropwizard.configuration.SubstitutingSourceProvider;
@@ -34,7 +35,7 @@ public class KaraokeApplication extends Application<KaraokeConfiguration> {
     @Override
     public void run(KaraokeConfiguration configuration, Environment environment) throws Exception {
 
-        System.out.println("Starting Karaoke Application");
+        Logw.trace("Starting Karaoke Application Server");
 
         MongoClientOptions clientOptions = MongoClientOptions.builder()
                 .connectTimeout(500).build();
