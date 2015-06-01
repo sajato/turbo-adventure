@@ -2,13 +2,12 @@ package de.atomfrede.github.karaoke.server.mongo;
 
 import com.codahale.metrics.health.HealthCheck;
 import com.mongodb.MongoClient;
+import com.mongodb.client.MongoIterable;
 import mockit.Mocked;
 import mockit.NonStrictExpectations;
 import mockit.integration.junit4.JMockit;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
-import java.util.ArrayList;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -18,14 +17,19 @@ public class MongoHealthCheckTest {
 
     @Mocked
     MongoClient mongoClient;
+    @Mocked
+    MongoIterable mongoIterable;
 
     @Test
     public void shouldBeHealthy() throws Exception {
 
         new NonStrictExpectations() {{
 
-            mongoClient.getDatabaseNames();
-            result = new ArrayList<>();
+            mongoClient.listDatabaseNames();
+            result = mongoIterable;
+
+            mongoIterable.first();
+            result = "DB";
         }};
 
         MongoHealthCheck check = new MongoHealthCheck(mongoClient);
@@ -39,7 +43,7 @@ public class MongoHealthCheckTest {
 
         new NonStrictExpectations() {{
 
-            mongoClient.getDatabaseNames();
+            mongoClient.listDatabaseNames();
             result = new Exception("MongoDB error");
         }};
 
